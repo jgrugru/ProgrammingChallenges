@@ -61,7 +61,7 @@ class Node():
     def generation_count(self):
         return len(self.get_lineage())
 
-    def get_lineage(self):  # This includes itself
+    def get_lineage(self):
         parent_node = self.parent
         lineage = [self.coords]
 

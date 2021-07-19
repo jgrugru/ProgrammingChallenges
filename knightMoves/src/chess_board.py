@@ -33,15 +33,6 @@ class Coordinates():
         return f"({self._x}, {self._y})"
 
 
-# class cell():
-#     def __init__(self, char, pos):
-#         self.char = char
-#         self.pos = pos
-
-#     def __repr__(self):
-#         return str(self.char)
-
-
 KNIGHT_MOVES = [
     Coordinates(2, 1),
     Coordinates(2, -1),

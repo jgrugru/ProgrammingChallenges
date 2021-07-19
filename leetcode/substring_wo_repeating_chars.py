@@ -1,6 +1,6 @@
 def lengthOfLongestSubstring(s: str) -> int:
     """
-    l_index represents the left index; it adds one, shrinking the window
+    l_index represents the left index. It adds one, shrinking the window
     as soon as a duplicate is found and keeps shrinking until
     the duplicate no longer appears in the window. r_index represents
     the right index.

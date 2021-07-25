@@ -5,7 +5,7 @@ def is_palindrome(s):
 def longestPalindrome(s: str) -> str:
     largest_palindrome = s[0]
     # l_index = 0
-    r_index =  len(s) - 1
+    r_index = len(s) - 1
 
     for l_index in range(len(s)):
         r_index = len(s) - 1
@@ -15,7 +15,6 @@ def longestPalindrome(s: str) -> str:
             if l_index == r_index:
                 break
             elif s[l_index] == s[r_index]:
-                # print(f"r_index is {r_index}\ncurrent_str is {s[l_index:r_index+1]}\nis_palindrome --> {is_palindrome(s[l_index:r_index+1])}")
                 test_str = s[l_index:r_index+1]
                 if is_palindrome(test_str):
                     if len(largest_palindrome) < len(test_str):
@@ -24,9 +23,10 @@ def longestPalindrome(s: str) -> str:
                 else:
                     r_index -= 1
             else:
-                r_index  -= 1
+                r_index -= 1
 
     return largest_palindrome
+
 
 print(longestPalindrome("babad"))
 print(longestPalindrome("cbbd"))

@@ -4,6 +4,7 @@ def check_range(x):
     else:
         return x
 
+
 def reverse(x: int) -> int:
     is_negative = bool(x < 0)
 
@@ -13,6 +14,7 @@ def reverse(x: int) -> int:
         return check_range(-1 * int(reverse_int[::-1]))
     else:
         return check_range(int(reverse_int[::-1]))
+
 
 print(reverse(123450))
 print(reverse(-123))
@@ -24,4 +26,4 @@ print(reverse(-20000001000))
 print(reverse(000000000000))
 print(reverse(100000000))
 print(reverse(1534236469))
-print(2**31 -1)
+print(2 ** 31 - 1)

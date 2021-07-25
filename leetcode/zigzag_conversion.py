@@ -1,6 +1,7 @@
 from collections import defaultdict
 from math import ceil
 
+
 def convert_dict_to_str(my_dict):
     return_str = ""
     for str_list in my_dict.values():
@@ -9,6 +10,7 @@ def convert_dict_to_str(my_dict):
 
     return return_str
 
+
 def convert(s: str, numRows: int) -> str:
     if numRows >= len(s) or numRows == 1:
         return s
@@ -16,7 +18,7 @@ def convert(s: str, numRows: int) -> str:
     column_gap = numRows - 2
     output_dict = defaultdict(list)
     starting_index = numRows + column_gap
-    if numRows - column_gap  == 2:
+    if numRows - column_gap == 2:
         num_columns = ceil(len(s)/numRows)
     else:
         num_columns = int(len(s)/numRows)
@@ -26,7 +28,7 @@ def convert(s: str, numRows: int) -> str:
         if count == 0:
             col_str = s[0:starting_index]
         else:
-            col_str = s[(starting_index * count):(starting_index * (count + 1))]
+            col_str = s[(starting_index * count):(starting_index * (count + 1))] # noqa E501
 
         for index, char in enumerate(col_str[:numRows]):
             output_dict[index].append(char)
@@ -34,7 +36,6 @@ def convert(s: str, numRows: int) -> str:
         for index, char in enumerate(col_str[numRows:]):
             output_dict[(numRows - 2) - index].append(char)
 
-    
     return convert_dict_to_str(output_dict)
 
 
@@ -48,4 +49,3 @@ print(convert("AB", 2))
 print(convert("ABC", 2))
 print(convert("ABCDE", 3))
 print(convert("PAYPALI", 4))
-

@@ -13,28 +13,39 @@ def clamp_range(x):
 
 
 def find_digits_in_str(s: str):
-    return search("([-,+]\d+$)|(\d+)", s)
+    if search("(\-\-\W*\d+)|(\-\+\W*\d+)|(\+\+\W*\d+)|(\+\-\W*\d+)", s):
+        return False
+    else:
+        return search("([-, +]*\d+)", s)
 
 
 def contains_non_whitespace(s: str):
-    return bool(search("\w|.", s))
+    return bool(search("\w|\.", s))
 
 
 def leading_str_has_non_whitespace(s, r_index):
     return contains_non_whitespace(s[:r_index])
 
 
+def whitespace_after_sign(s):
+    match_object = search("((\-|\+)\W+\d+)", s)
+    return bool(match_object)
+
+
 def myAtoi(s: str) -> int:
     match_object = find_digits_in_str(s)
 
     if match_object:
-        if leading_str_has_non_whitespace(s, match_object.span()[0]):
-            return 0
-        else:
-            x = int(match_object.group())
+        matched_number = match_object.group(0)
+        if not leading_str_has_non_whitespace(s, match_object.span()[0]):
+            digit_str = match_object.group(0)
+            if whitespace_after_sign(digit_str):
+                return 0
+
+            x = int(matched_number)
             return clamp_range(x)
 
-    return match_object
+    return 0
 
 
 print(myAtoi("    -12344"))
@@ -43,4 +54,10 @@ print(myAtoi("42"))
 print(myAtoi("   -42"))
 print(myAtoi("4193 with words"))
 print(myAtoi("words and 987"))
-print(myAtoi("42"))
+print(myAtoi("     "))
+print(myAtoi("     ...   sdff  3"))
+print(myAtoi("+-12"))
+print(myAtoi("  -0012a42"))
+print(myAtoi("  +  413"))
+
+# flake8: noqa

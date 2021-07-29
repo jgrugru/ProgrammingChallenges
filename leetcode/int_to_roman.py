@@ -18,7 +18,7 @@ def intToRoman(num: int) -> str:
         else:
             for x in range(quotient):
                 returning_str += letter
-  
+
         previous_quotient = quotient
 
     return returning_str
